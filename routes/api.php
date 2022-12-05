@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('registr', [\App\Http\Controllers\AuthController::class,'register']);
+//Public Routs
+Route::post('register', [AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
