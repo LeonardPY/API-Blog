@@ -22,4 +22,10 @@ class AuthController extends BaseController
         $response = $this->services->login($request);
         return $response;
     }
+
+    //logout
+    public  function logout()
+    {
+        return $this->services->logout();
+    }
 }

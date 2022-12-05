@@ -18,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 //Public Routs
 Route::post('register', [AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
+
+// Protected Routes
+Route::group(['middleware'=>['auth:sanctum']], function () {
+
+    //User
+    Route::post('logout',[AuthController::class,'logout']);
+});

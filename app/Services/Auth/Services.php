@@ -39,4 +39,13 @@ class Services
             'token' => auth()->user()->createToken('secret')->plainTextToken
         ],200);
     }
+
+    public function logout()
+    {
+        // return user logout
+        auth()->user()->tokens()->delete();
+        return response([
+            'massage' => 'Logout success.'
+        ],200);
+    }
 }
