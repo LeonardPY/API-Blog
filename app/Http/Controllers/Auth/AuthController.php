@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\UpdateRequest;
+use App\Http\Requests\AuthRequest\LoginRequest;
+use App\Http\Requests\AuthRequest\RegisterRequest;
+use App\Http\Requests\AuthRequest\UpdateRequest;
 
 class AuthController extends BaseController
 {
