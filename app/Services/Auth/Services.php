@@ -48,4 +48,34 @@ class Services
             'massage' => 'Logout success.'
         ],200);
     }
+
+    public function user()
+    {
+        return response([
+            'user' => \auth()->user()
+        ],200);
+    }
+
+    public function update($data)
+    {
+        $user = \auth()->user();
+
+        if(isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }else {
+            $data['password'] = $user->password;
+        }
+        if(!isset($data['name'])) {
+            $data['name'] = $user->name;
+        }
+
+        $user->update([
+            "name" => $data['name'],
+            "password" => $data['password']
+        ]);
+
+        return response([
+            'user' => \auth()->user()
+        ],200);
+    }
 }
