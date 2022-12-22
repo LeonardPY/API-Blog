@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Post;
 
 
 use App\Http\Controllers\Controller;
-use App\Services\Auth\Services;
+use App\Services\Post\Services;
 
 class BaseController extends Controller
 {
