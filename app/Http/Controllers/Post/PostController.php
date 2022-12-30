@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Requests\Post\PostRequest;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class PostController extends BaseController
 {
@@ -17,7 +19,18 @@ class PostController extends BaseController
     public function store(PostRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = $this->saveImage($request->image, 'posts');
         return $this->services->store($data);
+    }
+
+    // user update post
+    public function update(UpdateRequest $request, $id)
+    {
+        $data = $request->validated();
+        return $this->services->update($data, $id);
+    }
+
+    public function destroy($id)
+    {
+        return $this->services->destroy($id);
     }
 }

@@ -3,10 +3,11 @@
 namespace App\Services\Auth;
 
 use App\Models\User;
+use App\Services\BaseService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class Services
+class Services extends BaseService
 {
     public function store($data)
     {
