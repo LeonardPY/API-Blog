@@ -85,4 +85,26 @@ class Services extends BaseService
             'messages' => 'Post deleted .'
         ],200);
     }
+
+    public function show($id)
+    {
+        $post = Post::find($id);
+
+        if (!$post) {
+            return response([
+                'message' => 'Post not found.'
+            ],403);
+        }
+
+        if ($post->user_id != auth()->user()->id) {
+            return response([
+                'message' => 'Permission denied.'
+            ],403);
+        }
+
+        return response([
+            'post' => $post
+        ],200);
+
+    }
 }

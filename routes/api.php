@@ -31,6 +31,7 @@ Route::group(['middleware'=>['auth:sanctum']], function () {
     //Post
     Route::get('/posts',[PostController::class,'index']);  // get user posts
     Route::post('/posts',[PostController::class, 'store']); // create post
+    Route::get('/posts/{id}',[PostController::class,'show']); // get single post
     Route::put('/posts/{id}',[PostController::class,'update']); // update post
     Route::delete('/post/{id}/destroy', [PostController::class, 'destroy']); // delete post
 });

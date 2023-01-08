@@ -29,8 +29,15 @@ class PostController extends BaseController
         return $this->services->update($data, $id);
     }
 
+    // user delete post
     public function destroy($id)
     {
         return $this->services->destroy($id);
+    }
+
+    // show single post
+    public function show($id)
+    {
+        return $this->services->show($id);
     }
 }
