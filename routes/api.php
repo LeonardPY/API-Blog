@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\Post\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,11 @@ Route::group(['middleware'=>['auth:sanctum']], function () {
     Route::get('/posts/{id}',[PostController::class,'show']); // get single post
     Route::put('/posts/{id}',[PostController::class,'update']); // update post
     Route::delete('/post/{id}/destroy', [PostController::class, 'destroy']); // delete post
+
+    //Comment
+    Route::get('/posts/{id}/comments',[CommentController::class,'index']); // all comments of a post
+    Route::post('/posts/{id}/comments',[CommentController::class,'store']); // create comment on a post
+    Route::put('/comments/{id}',[CommentController::class,'update']); // update a comment
+    Route::delete('/comments/{id}',[CommentController::class,'destroy']); // delete a comment
+
 });
