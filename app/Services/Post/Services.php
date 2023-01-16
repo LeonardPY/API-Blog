@@ -12,9 +12,14 @@ class Services extends BaseService
     public function index()
     {
         return response([
-            'posts' => Post::orderBy('created_at', 'desc')->get()
+            'posts' => Post::orderBy('created_at', 'desc')->with('user:id,name')->withCount('comment', 'like')
+                ->with('like', function ($like) {
+                    return $like->where('user_id', auth()->user()->id)
+                        ->select('id', 'user_id', 'post_id');
+                })->get()
         ],200);
     }
+
     public function store($data)
     {
         $data['image'] = $this->saveImage($data['image'], 'posts');
