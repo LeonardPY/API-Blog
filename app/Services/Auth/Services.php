@@ -12,11 +12,14 @@ class Services extends BaseService
     public function store($data)
     {
         $data['password'] = Hash::make($data['password']);
-        $user = User::create([
-            "name"     => $data['name'],
-            "email"    => $data['email'],
-            "password" => $data['password']
-        ]);
+
+        $user = transaction(function () use ($data) {
+            return User::query()->create([
+                "name" => $data['name'],
+                "email" => $data['email'],
+                "password" => $data['password']
+            ]);
+        });
 
         //return user token in response
         return response([

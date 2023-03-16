@@ -9,11 +9,10 @@ use App\Http\Requests\AuthRequest\UpdateRequest;
 class AuthController extends BaseController
 {
     //registr
-    public function register(RegisterRequest $request)
+    public function register(RegisterRequest $request): object
     {
         $request = $request->validated();
-        $response = $this->services->store($request);
-        return $response;
+        return $this->services->store($request);
     }
 
     //login
